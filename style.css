@@ -16,7 +16,7 @@ section{
     display: flex;
     flex-wrap: wrap;
     padding: 30px;
-    height: 100vh;
+    gap: 25px;
 }
 #right{
     background-color: #f4f4f4;
@@ -70,11 +70,55 @@ img{
     left: 20px;
     bottom: 15px;
 }
+#left{
+    height: 300px;
+    width: 25%;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#left span, #left div{
+    display: flex;
+    justify-content: space-between;
+}
+input{
+    width: 90%;
+    border: none;
+    height: 25px;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+#left button{
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+span button{
+    width: 25px;
+}
+#left div{
+    background-color: #FFA500;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 5px;
+    margin-bottom: -15px;
+}
+#checkout{
+    padding: 10px 0;
+    border-radius: 5px;
+}
 @media only screen and (max-width: 600px){
     #right{
         width: 100%;
     }
     #menu{
         grid-template-columns: repeat(1, 1fr);
+    }
+    #left{
+        width: 80%;
     }
 }
