@@ -87,11 +87,19 @@ function renderProducts(){
     })
 }
 let cart= JSON.parse(localStorage.getItem("cart")) || {};
+totalPriceElement= document.getElementById("total");
+    Fee= document.getElementById("fee");
+    Payable= document.getElementById("payable");
+let totalPrice;
 function renderCart(){
     const cartItems= Object.keys(cart).map(productId =>{
         const product= products.find(p => p.id == productId);
         return{ ...product, count: cart[productId]};
     })
+    totalPrice= cartItems.reduce((acc, item) => acc + (item.price * item.count), 0);
+    totalPriceElement.innerText= totalPrice + " تومان";
+    Fee.innerText= totalPrice * 0.05 + " تومان";
+    Payable.innerText= totalPrice + totalPrice * 0.05 + " تومان";
 }
 function add(id){
     if(cart[id]){
@@ -114,5 +122,36 @@ function remove(id){
     renderProducts();
     renderCart();
 }
+const Off= document.getElementById("off");
+    Submit= document.getElementById("submit");
+    Discount= document.getElementById("discount");
+Discount.innerText= "0 درصد";
+Submit.addEventListener("click", () =>{
+    if(Off.value=== "gold"){
+        Discount.innerText= "30 درصد"
+        Off.value= "";
+        Payable.innerText= (totalPrice + totalPrice * 0.05) * 7 / 10 + " تومان"
+    }else if(Off.value=== "silver"){
+        Discount.innerText= "20 درصد"
+        Off.value= "";
+        Payable.innerText= (totalPrice + totalPrice * 0.05) * 8 / 10 + " تومان"
+    }else if(Off.value=== "bronze"){
+        Discount.innerText= "10 درصد"
+        Off.value= "";
+        Payable.innerText= (totalPrice + totalPrice * 0.05) * 9 / 10 + " تومان"
+    }else{
+        Discount.innerText= "0 درصد"
+        Payable.innerText= totalPrice + totalPrice * 0.05 + " تومان"
+    }
+})
+const Checkout= document.getElementById("checkout");
+Checkout.addEventListener("click", () =>{
+    if(totalPrice!== 0){
+        localStorage.removeItem("cart");
+        cart= {};
+        renderProducts();
+        renderCart();
+    }
+})
 renderProducts()
 renderCart()
