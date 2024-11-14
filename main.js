@@ -145,13 +145,18 @@ Submit.addEventListener("click", () =>{
     }
 })
 const Checkout= document.getElementById("checkout");
+Modal= document.getElementById("modal");
 Checkout.addEventListener("click", () =>{
     if(totalPrice!== 0){
         localStorage.removeItem("cart");
         cart= {};
         renderProducts();
         renderCart();
+        Modal.style.display= "block";
     }
+})
+document.getElementById("close").addEventListener("click", () => {
+    Modal.style.display = "none";
 })
 renderProducts()
 renderCart()
