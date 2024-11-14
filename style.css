@@ -1,0 +1,80 @@
+@font-face{
+    font-family: "Vazir";
+    src: url("Font/Vazir-Medium-FD.woff2") format("woff2");
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Vazir;
+    direction: rtl;
+}
+section{
+    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    height: 100vh;
+}
+#right{
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    width: 70%;
+}
+h1{
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: 32px;
+}
+#menu{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    border-radius: 10px;
+    height: 70vh;
+    padding: 20px;
+    overflow-y: scroll;
+}
+.product{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    gap: 10px;
+    padding: 5px;
+}
+img{
+    height: 100px;
+    width: 100px;
+}
+.product button{
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    color: white;
+    background-color: red;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+}
+.product nav{
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+}
+@media only screen and (max-width: 600px){
+    #right{
+        width: 100%;
+    }
+    #menu{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
